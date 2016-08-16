@@ -1,0 +1,32 @@
+<div class= "container infinite-table">
+
+ <%= render :partial => 'product', :object => @products %>
+</div>
+
+<br>
+<script type="text/javascript">
+$(document).ready(function(){
+  page = 1
+});
+
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() > $(document).height() - 100) {
+    page = page+1
+      $.ajax({
+             type: "get",
+             data: "page="+ page,
+             url: "/products",
+             success: function(){
+               
+             }
+       });
+
+   }
+});
+
+
+
+
+
+</script>
+<%#= link_to 'New Product', new_product_path %>
